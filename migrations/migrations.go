@@ -8,7 +8,7 @@ import (
 )
 
 func Migrate(db *gorm.DB) error {
-	err := db.AutoMigrate(&entities.School{})
+	err := db.AutoMigrate(&entities.School{}, &entities.Teachers{})
 
 	if err != nil {
 		log.Println("Migration Failed")
