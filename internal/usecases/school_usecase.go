@@ -3,11 +3,13 @@ package usecases
 import (
 	"attendance-api/internal/adapters/repositories"
 	"attendance-api/internal/entities"
+	"context"
 )
 
 type (
 	SchoolService interface {
-		CreateSchool(schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error)
+		CreateSchool(ctx context.Context, schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error)
+		FindSchoolByID(ctx context.Context, schoolID string) (*entities.School, error)
 	}
 
 	schoolService struct {
@@ -22,7 +24,7 @@ func NewSchoolService(schoolRepository repositories.SchoolRepository) SchoolServ
 	}
 }
 
-func (ss *schoolService) CreateSchool(schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error) {
+func (ss *schoolService) CreateSchool(ctx context.Context, schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error) {
 
 	school := &entities.School{
 		SchoolName:  schoolReq.SchoolName,
@@ -35,7 +37,7 @@ func (ss *schoolService) CreateSchool(schoolReq *entities.SchoolRequest) (*entit
 		IsActive:    true,
 	}
 
-	if err := ss.SchoolRepository.Create(school); err != nil {
+	if err := ss.SchoolRepository.Create(ctx, school); err != nil {
 
 		return nil, err
 	}
@@ -53,4 +55,11 @@ func (ss *schoolService) CreateSchool(schoolReq *entities.SchoolRequest) (*entit
 		CreatedAt:   school.CreatedAt,
 		UpdatedAt:   school.UpdatedAt,
 	}, nil
+}
+
+func (ss *schoolService) FindSchoolByID(ctx context.Context, id string) (*entities.School, error) {
+
+	res, err := ss.SchoolRepository.FindById(ctx, id)
+
+	return res, err
 }

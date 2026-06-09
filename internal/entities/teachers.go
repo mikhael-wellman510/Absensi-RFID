@@ -7,9 +7,9 @@ type (
 		Base
 		Nip         string `json:"nip" gorm:"column:nip;not null"`
 		FullName    string `json:"fullName" gorm:"column:full_name;not null"`
-		Email       string `json:"email" gorm:"column:email;not null"`
+		Email       string `json:"email" gorm:"column:email;not null;unique"`
 		Address     string `json:"address" gorm:"column:address;type:text;not null"`
-		PhoneNumber string `json:"phoneNumber" gorm:"column:phone_number;not null"`
+		PhoneNumber string `json:"phoneNumber" gorm:"column:phone_number;not null;unique"`
 		UserName    string `json:"userName" gorm:"column:user_name;not null"`
 		Password    string `json:"password" gorm:"column:password;not null"`
 		IsActive    bool   `json:"isActive" gorm:"column:is_active;not null"`
@@ -22,7 +22,7 @@ type (
 		Nip         string `json:"nip" binding:"required"`
 		FullName    string `json:"fullName" binding:"required"`
 		Email       string `json:"email" binding:"required,email"`
-		Address     string `json:"addres" binding:"required"`
+		Address     string `json:"address" binding:"required"`
 		PhoneNumber string `json:"phoneNumber" binding:"required"`
 		UserName    string `json:"userName" binding:"required"`
 		Password    string `json:"password" binding:"required"`

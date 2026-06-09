@@ -3,9 +3,9 @@ package main
 import "attendance-api/cmd/app"
 
 func main() {
-	app := app.App{}
+	apps := app.App{}
 
-	app.ConnectDb()
-	app.Routes()
-	app.Run()
+	apps.ConnectDb()
+	apps.Routes()
+	apps.Run()
 }

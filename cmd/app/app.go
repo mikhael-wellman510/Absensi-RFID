@@ -42,8 +42,20 @@ func (app *App) Routes() {
 	schoolController := controllers.NewSchoolController(schoolUseCase)
 
 	schoolRoutes := router.Group(fmt.Sprintf("%s/school", baseUrl))
-
 	schoolRoutes.POST("/createSchool", schoolController.CreateSchool)
+
+	teachersRepo := repositories.NewTeachersRepository(app.Db)
+	teachersUseCase := usecases.NewTeachersService(teachersRepo, schoolUseCase)
+	teachersController := controllers.NewTeachersController(teachersUseCase)
+
+	teachersRoutes := router.Group(fmt.Sprintf("%s/teachers", baseUrl))
+	teachersRoutes.POST("/createTeachers", teachersController.CreateTeachers)
+
+	emailUseCase := usecases.NewEmailService()
+	emailController := controllers.NewEmailController(emailUseCase)
+
+	emailRoutes := router.Group(fmt.Sprintf("%s/email", baseUrl))
+	emailRoutes.POST("/sendEmail", emailController.SendEmail)
 
 	app.Router = router
 }

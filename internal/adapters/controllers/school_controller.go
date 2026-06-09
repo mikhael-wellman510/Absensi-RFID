@@ -37,7 +37,7 @@ func (sc *schoolController) CreateSchool(ctx *gin.Context) {
 		return
 	}
 
-	res, err := sc.schoolService.CreateSchool(&schoolReq)
+	res, err := sc.schoolService.CreateSchool(ctx.Request.Context(), &schoolReq)
 
 	if err != nil {
 		log.Println("Error service : ", err.Error())
