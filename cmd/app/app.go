@@ -51,6 +51,14 @@ func (app *App) Routes() {
 	teachersRoutes := router.Group(fmt.Sprintf("%s/teachers", baseUrl))
 	teachersRoutes.POST("/createTeachers", teachersController.CreateTeachers)
 
+	educationLevelsRepo := repositories.NewEducationLevelsRepository(app.Db)
+	educationLevelsUseCase := usecases.NewEducationLevelsService(educationLevelsRepo)
+	educationLevelController := controllers.NewEducationLevelsController(educationLevelsUseCase)
+
+	educationLevelRoutes := router.Group(fmt.Sprintf("%s/educationLevels", baseUrl))
+	educationLevelRoutes.POST("/createEducationLevels", educationLevelController.CreateEducationLevels)
+	educationLevelRoutes.GET("/findById/:id", educationLevelController.FindEducationLevelsById)
+
 	emailUseCase := usecases.NewEmailService()
 	emailController := controllers.NewEmailController(emailUseCase)
 
