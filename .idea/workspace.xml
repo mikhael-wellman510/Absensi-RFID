@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e97955-414b-4e28-9230-682fa853d4cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/education_levels_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/education_levels_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/usecases/education_levels_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/faculties_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/grade_level_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/room_name_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/study_programs_repository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/entities/education_levels.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/education_levels.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/grade_levels.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/grade_level.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
