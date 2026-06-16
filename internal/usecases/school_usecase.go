@@ -9,57 +9,75 @@ import (
 type (
 	SchoolService interface {
 		CreateSchool(ctx context.Context, schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error)
-		FindSchoolByID(ctx context.Context, schoolID string) (*entities.School, error)
+		FindSchoolById(ctx context.Context, id string) (*entities.SchoolResponse, error)
 	}
 
 	schoolService struct {
-		SchoolRepository repositories.SchoolRepository
+		schoolRepository repositories.SchoolRepository
 	}
 )
 
 func NewSchoolService(schoolRepository repositories.SchoolRepository) SchoolService {
 
 	return &schoolService{
-		SchoolRepository: schoolRepository,
+		schoolRepository: schoolRepository,
 	}
 }
 
-func (ss *schoolService) CreateSchool(ctx context.Context, schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error) {
+func (s *schoolService) CreateSchool(ctx context.Context, schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error) {
 
 	school := &entities.School{
+		Npsn:        schoolReq.Npsn,
 		SchoolName:  schoolReq.SchoolName,
 		Address:     schoolReq.Address,
 		SchoolLevel: schoolReq.SchoolLevel,
-		PhoneNumber: schoolReq.PhoneNumber,
 		Email:       schoolReq.Email,
 		City:        schoolReq.City,
 		Province:    schoolReq.Province,
+		PhoneNumber: schoolReq.PhoneNumber,
 		IsActive:    true,
 	}
 
-	if err := ss.SchoolRepository.Create(ctx, school); err != nil {
-
+	if err := s.schoolRepository.Create(ctx, school); err != nil {
 		return nil, err
 	}
 
 	return &entities.SchoolResponse{
 		Id:          school.ID,
+		Npsn:        school.Npsn,
 		SchoolName:  school.SchoolName,
 		Address:     school.Address,
 		SchoolLevel: school.SchoolLevel,
-		PhoneNumber: school.PhoneNumber,
 		Email:       school.Email,
 		City:        school.City,
 		Province:    school.Province,
+		PhoneNumber: school.PhoneNumber,
 		IsActive:    school.IsActive,
 		CreatedAt:   school.CreatedAt,
 		UpdatedAt:   school.UpdatedAt,
 	}, nil
 }
 
-func (ss *schoolService) FindSchoolByID(ctx context.Context, id string) (*entities.School, error) {
+func (s *schoolService) FindSchoolById(ctx context.Context, id string) (*entities.SchoolResponse, error) {
 
-	res, err := ss.SchoolRepository.FindById(ctx, id)
+	res, err := s.schoolRepository.FindById(ctx, id)
 
-	return res, err
+	if err != nil {
+		return nil, err
+	}
+
+	return &entities.SchoolResponse{
+		Id:          res.ID,
+		Npsn:        res.Npsn,
+		SchoolName:  res.SchoolName,
+		Address:     res.Address,
+		SchoolLevel: res.SchoolLevel,
+		Email:       res.Email,
+		City:        res.City,
+		Province:    res.Province,
+		PhoneNumber: res.PhoneNumber,
+		IsActive:    res.IsActive,
+		CreatedAt:   res.CreatedAt,
+		UpdatedAt:   res.UpdatedAt,
+	}, nil
 }

@@ -5,13 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e97955-414b-4e28-9230-682fa853d4cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/faculties_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/grade_level_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/room_name_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/study_programs_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Absen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/grade_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/user_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/academic_year_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/attendance_event_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/attendance_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/class_room_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/device_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/grade_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/parent_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_class_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_parent_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/teacher_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/user_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/academic_year.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/attendance.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/attendance_event.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/device.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/grade.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/parent.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/student.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/student_class.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/student_parent.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/teacher.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/entities/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/enums/event_attendance.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/enums/relation_type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/enums/role.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/enums/school_level.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/enums/status.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/enums/status_attendance.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/grade_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/user_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/entities/grade_levels.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/grade_level.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/controllers/education_levels_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/controllers/school_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/controllers/school_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/controllers/teachers_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/education_levels_repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/faculties_repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/grade_level_repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/room_name_repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/school_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/school_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/student_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/study_programs_repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/teachers_repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/education_levels.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/faculties.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/grade_level.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/room_name.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/class_room.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/school.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/school.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/students.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/study_programs.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/teachers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/enums/gender.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/enums/gender.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/education_levels_usecase.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/school_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/school_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/teachers_usecase.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/migrations.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/migrations.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/drivers/sql/connect_db.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/drivers/sql/connect_db.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,27 +92,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Build.go build cmd/.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.analysis.ui.options.defaults": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/Dell/Documents/Attandance-Project/Absensi-RFID",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Build.go build cmd/.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboardingV2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.analysis.ui.options.defaults&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/Documents/Attandance-Project/Absensi-RFID&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell\Documents\Attandance-Project\Absensi-RFID" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="go build cmd/" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="Absensi-RFID" />

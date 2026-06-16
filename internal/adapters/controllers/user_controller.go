@@ -11,35 +11,35 @@ import (
 )
 
 type (
-	SchoolController interface {
-		CreateSchool(ctx *gin.Context)
-		FindSchoolById(ctx *gin.Context)
+	UserController interface {
+		CreateUser(ctx *gin.Context)
+		FindUserById(ctx *gin.Context)
 	}
 
-	schoolController struct {
-		schoolService usecases.SchoolService
+	userController struct {
+		userService usecases.UserService
 	}
 )
 
-func NewSchoolController(schoolService usecases.SchoolService) SchoolController {
+func NewUserController(userService usecases.UserService) UserController {
 
-	return &schoolController{
-		schoolService: schoolService,
+	return &userController{
+		userService: userService,
 	}
 }
 
-func (s *schoolController) CreateSchool(ctx *gin.Context) {
-	schoolReq := entities.SchoolRequest{}
+func (u *userController) CreateUser(ctx *gin.Context) {
+	userReq := entities.UserRequest{}
 
-	if err := ctx.ShouldBind(&schoolReq); err != nil {
+	if err := ctx.ShouldBind(&userReq); err != nil {
 		log.Println("err req : ", err)
 		ctx.JSON(http.StatusBadRequest, utils.BuildResponseFailed(err.Error()))
 		return
 	}
 
-	res, err := s.schoolService.CreateSchool(
+	res, err := u.userService.CreateUser(
 		ctx.Request.Context(),
-		&schoolReq,
+		&userReq,
 	)
 
 	if err != nil {
@@ -50,7 +50,7 @@ func (s *schoolController) CreateSchool(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, utils.BuildResponseSuccess("Success", res))
 }
 
-func (s *schoolController) FindSchoolById(ctx *gin.Context) {
+func (u *userController) FindUserById(ctx *gin.Context) {
 
 	params := ctx.Param("id")
 
@@ -59,7 +59,7 @@ func (s *schoolController) FindSchoolById(ctx *gin.Context) {
 		return
 	}
 
-	res, err := s.schoolService.FindSchoolById(
+	res, err := u.userService.FindUserById(
 		ctx.Request.Context(),
 		params,
 	)

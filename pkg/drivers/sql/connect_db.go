@@ -9,6 +9,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"gorm.io/gorm/schema"
 )
 
 func OpenDbConnection() *gorm.DB {
@@ -27,6 +28,9 @@ func OpenDbConnection() *gorm.DB {
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", config.User, config.Password, config.Host, config.Port, config.DbName)
 
 	db, err := gorm.Open(mysql.Open(connectionString), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true,
+		},
 		Logger: logger.Default.LogMode(logger.Info),
 	})
 

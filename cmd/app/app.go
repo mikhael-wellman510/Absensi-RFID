@@ -37,27 +37,29 @@ func (app *App) Routes() {
 
 	baseUrl := fmt.Sprintf("%s/v%d", constants.ApiPrevix, constants.ApiVersion)
 
+	gradeRepo := repositories.NewGradeRepository(app.Db)
+	gradeUseCase := usecases.NewGradeService(gradeRepo)
+	gradeController := controllers.NewGradeController(gradeUseCase)
+
+	gradeRoutes := router.Group(fmt.Sprintf("%s/grade", baseUrl))
+	gradeRoutes.POST("/createGrade", gradeController.CreateGrade)
+	gradeRoutes.GET("/findGradeById/:id", gradeController.FindGradeById)
+
 	schoolRepo := repositories.NewSchoolRepository(app.Db)
 	schoolUseCase := usecases.NewSchoolService(schoolRepo)
 	schoolController := controllers.NewSchoolController(schoolUseCase)
 
 	schoolRoutes := router.Group(fmt.Sprintf("%s/school", baseUrl))
 	schoolRoutes.POST("/createSchool", schoolController.CreateSchool)
+	schoolRoutes.GET("/findSchoolById/:id", schoolController.FindSchoolById)
 
-	teachersRepo := repositories.NewTeachersRepository(app.Db)
-	teachersUseCase := usecases.NewTeachersService(teachersRepo, schoolUseCase)
-	teachersController := controllers.NewTeachersController(teachersUseCase)
+	userRepo := repositories.NewUserRepository(app.Db)
+	userUseCase := usecases.NewUserService(userRepo)
+	userController := controllers.NewUserController(userUseCase)
 
-	teachersRoutes := router.Group(fmt.Sprintf("%s/teachers", baseUrl))
-	teachersRoutes.POST("/createTeachers", teachersController.CreateTeachers)
-
-	educationLevelsRepo := repositories.NewEducationLevelsRepository(app.Db)
-	educationLevelsUseCase := usecases.NewEducationLevelsService(educationLevelsRepo)
-	educationLevelController := controllers.NewEducationLevelsController(educationLevelsUseCase)
-
-	educationLevelRoutes := router.Group(fmt.Sprintf("%s/educationLevels", baseUrl))
-	educationLevelRoutes.POST("/createEducationLevels", educationLevelController.CreateEducationLevels)
-	educationLevelRoutes.GET("/findById/:id", educationLevelController.FindEducationLevelsById)
+	userRoutes := router.Group(fmt.Sprintf("%s/user", baseUrl))
+	userRoutes.POST("/createUser", userController.CreateUser)
+	userRoutes.GET("/findUserById/:id", userController.FindUserById)
 
 	emailUseCase := usecases.NewEmailService()
 	emailController := controllers.NewEmailController(emailUseCase)
@@ -70,6 +72,9 @@ func (app *App) Routes() {
 
 func (app *App) Run() {
 	port := fmt.Sprintf(":%s", config.Config("PORT"))
-	app.Router.Run(port)
+	err := app.Router.Run(port)
+	if err != nil {
+		return
+	}
 
 }

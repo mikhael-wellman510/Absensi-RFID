@@ -5,8 +5,8 @@ import "log"
 type Gender string
 
 const (
-	GenderMale   = Gender("Male")
-	GenderFemale = Gender("Female")
+	GenderMale   = Gender("MALE")
+	GenderFemale = Gender("FEMALE")
 )
 
 func (gender Gender) IsValid() bool {
