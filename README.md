@@ -7,5 +7,5 @@ untuk running nya : go run .\cmd\main.go
 untuk migrasi data entity ke db : masuk ke package migration
 
 
-docs : https://chatgpt.com/c/6a30e2c7-48cc-83ec-a27f-7d4b7fea8c0d![Absen.png](../../../Downloads/Absen.png)![Absen.png](../../../Downloads/Absen.png)
+docs : https://chatgpt.com/c/6a30e2c7-48cc-83ec-a27f-7d4b7fea8c0d
 db diagram : https://dbdiagram.io/d/Absen-6a30f1db5c789b8acb910c29

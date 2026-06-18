@@ -61,6 +61,14 @@ func (app *App) Routes() {
 	userRoutes.POST("/createUser", userController.CreateUser)
 	userRoutes.GET("/findUserById/:id", userController.FindUserById)
 
+	parentRepo := repositories.NewParentRepository(app.Db)
+	parentUseCase := usecases.NewParentService(parentRepo, userUseCase)
+	parentController := controllers.NewParentController(parentUseCase)
+
+	parentRoutes := router.Group(fmt.Sprintf("%s/parent", baseUrl))
+	parentRoutes.POST("/createParent", parentController.CreateParent)
+	parentRoutes.GET("/findParentById/:id", parentController.FindParentById)
+
 	emailUseCase := usecases.NewEmailService()
 	emailController := controllers.NewEmailController(emailUseCase)
 

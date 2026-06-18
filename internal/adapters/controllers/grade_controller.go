@@ -52,16 +52,15 @@ func (g *gradeController) CreateGrade(ctx *gin.Context) {
 
 func (g *gradeController) FindGradeById(ctx *gin.Context) {
 
-	params := ctx.Param("id")
+	id, ok := utils.GetIdParam(ctx, "id")
 
-	if params == "" {
-		ctx.JSON(http.StatusBadRequest, utils.BuildResponseFailed("id is empty"))
+	if !ok {
 		return
 	}
 
 	res, err := g.gradeService.FindGradeById(
 		ctx.Request.Context(),
-		params,
+		id,
 	)
 
 	if err != nil {

@@ -5,13 +5,14 @@ import (
 	"attendance-api/internal/entities"
 	"context"
 	"errors"
-	"time"
+	"log"
 )
 
 type (
 	UserService interface {
 		CreateUser(ctx context.Context, userReq *entities.UserRequest) (*entities.UserResponse, error)
 		FindUserById(ctx context.Context, id string) (*entities.UserResponse, error)
+		FindById(ctx context.Context, id string) (*entities.User, error)
 	}
 
 	userService struct {
@@ -37,7 +38,6 @@ func (u *userService) CreateUser(ctx context.Context, userReq *entities.UserRequ
 		PhoneNumber: userReq.PhoneNumber,
 		Password:    userReq.Password,
 		Role:        userReq.Role,
-		LastLogin:   time.Now(),
 		IsActive:    true,
 	}
 
@@ -78,4 +78,10 @@ func (u *userService) FindUserById(ctx context.Context, id string) (*entities.Us
 		CreatedAt:   res.CreatedAt,
 		UpdatedAt:   res.UpdatedAt,
 	}, nil
+}
+
+func (u *userService) FindById(ctx context.Context, id string) (*entities.User, error) {
+	log.Println("user id : ", id)
+	return u.userRepository.FindById(ctx, id)
+
 }

@@ -52,16 +52,15 @@ func (u *userController) CreateUser(ctx *gin.Context) {
 
 func (u *userController) FindUserById(ctx *gin.Context) {
 
-	params := ctx.Param("id")
+	id, ok := utils.GetIdParam(ctx, "id")
 
-	if params == "" {
-		ctx.JSON(http.StatusBadRequest, utils.BuildResponseFailed("id is empty"))
+	if !ok {
 		return
 	}
 
 	res, err := u.userService.FindUserById(
 		ctx.Request.Context(),
-		params,
+		id,
 	)
 
 	if err != nil {

@@ -14,7 +14,7 @@ type (
 		PhoneNumber string     `json:"phoneNumber" gorm:"column:phone_number;not null"`
 		Password    string     `json:"password" gorm:"column:password;not null"`
 		Role        enums.Role `json:"role" gorm:"column:role;not null"`
-		LastLogin   time.Time  `json:"lastLogin" gorm:"column:last_login"`
+		LastLogin   time.Time  `json:"lastLogin" gorm:"column:last_login;default:null"`
 		IsActive    bool       `json:"isActive" gorm:"column:is_active"`
 	}
 
