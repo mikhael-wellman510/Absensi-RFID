@@ -10,6 +10,7 @@ type (
 	SchoolService interface {
 		CreateSchool(ctx context.Context, schoolReq *entities.SchoolRequest) (*entities.SchoolResponse, error)
 		FindSchoolById(ctx context.Context, id string) (*entities.SchoolResponse, error)
+		FindById(ctx context.Context, id string) (*entities.School, error)
 	}
 
 	schoolService struct {
@@ -80,4 +81,9 @@ func (s *schoolService) FindSchoolById(ctx context.Context, id string) (*entitie
 		CreatedAt:   res.CreatedAt,
 		UpdatedAt:   res.UpdatedAt,
 	}, nil
+}
+
+func (s *schoolService) FindById(ctx context.Context, id string) (*entities.School, error) {
+
+	return s.schoolRepository.FindById(ctx, id)
 }

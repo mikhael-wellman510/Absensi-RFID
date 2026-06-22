@@ -69,6 +69,22 @@ func (app *App) Routes() {
 	parentRoutes.POST("/createParent", parentController.CreateParent)
 	parentRoutes.GET("/findParentById/:id", parentController.FindParentById)
 
+	teacherRepo := repositories.NewTeacherRepository(app.Db)
+	teacherUseCase := usecases.NewTeacherService(teacherRepo, userUseCase, schoolUseCase)
+	teacherController := controllers.NewTeacherController(teacherUseCase)
+
+	teacherRoutes := router.Group(fmt.Sprintf("%s/teacher", baseUrl))
+	teacherRoutes.POST("/createTeacher", teacherController.CreateTeacher)
+	teacherRoutes.GET("/findTeacherById/:id", teacherController.FindTeacherById)
+
+	studentRepo := repositories.NewStudentRepository(app.Db)
+	studentUseCase := usecases.NewStudentService(studentRepo, schoolUseCase)
+	studentController := controllers.NewStudentController(studentUseCase)
+
+	studentRoutes := router.Group(fmt.Sprintf("%s/student", baseUrl))
+	studentRoutes.POST("/createStudent", studentController.CreateStudent)
+	studentRoutes.GET("/findStudentById/:id", studentController.FindStudentById)
+
 	emailUseCase := usecases.NewEmailService()
 	emailController := controllers.NewEmailController(emailUseCase)
 

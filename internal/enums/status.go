@@ -11,7 +11,7 @@ const (
 	Inactive    = Status("INACTIVE")
 )
 
-func (s Status) Value() bool {
+func (s Status) IsValid() bool {
 
 	switch s {
 	case Active, Graduated, Transferred, Inactive:

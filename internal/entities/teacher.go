@@ -16,7 +16,7 @@ type (
 		BirthDate time.Time    `json:"birthDate" gorm:"column:birth_date;not null"`
 		Address   string       `json:"address" gorm:"column:address;type:text;not null"`
 		IsActive  bool         `json:"isActive" gorm:"column:is_active;not null"`
-		User      User         `gorm:"foreignKey:userId"`
+		User      User         `gorm:"foreignKey:UserId"`
 		School    School       `gorm:"foreignKey:SchoolId"`
 	}
 
@@ -34,7 +34,7 @@ type (
 		Id             string         `json:"id"`
 		Nip            string         `json:"nip"`
 		Gender         enums.Gender   `json:"gender"`
-		BirthDate      time.Time      `json:"birthDate"`
+		BirthDate      string         `json:"birthDate"`
 		Address        string         `json:"address"`
 		IsActive       bool           `json:"isActive"`
 		SchoolResponse SchoolResponse `json:"schoolResponse"`
