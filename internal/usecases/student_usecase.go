@@ -13,6 +13,7 @@ type (
 	StudentService interface {
 		CreateStudent(ctx context.Context, studentReq *entities.StudentRequest) (*entities.StudentResponse, error)
 		FindStudentById(ctx context.Context, id string) (*entities.StudentResponse, error)
+		FindById(ctx context.Context, id string) (*entities.Student, error)
 	}
 
 	studentService struct {
@@ -142,4 +143,9 @@ func (s *studentService) FindStudentById(ctx context.Context, id string) (*entit
 		UpdatedAt: res.UpdatedAt,
 	}, nil
 
+}
+
+func (s *studentService) FindById(ctx context.Context, id string) (*entities.Student, error) {
+
+	return s.studentRepository.FindById(ctx, id)
 }

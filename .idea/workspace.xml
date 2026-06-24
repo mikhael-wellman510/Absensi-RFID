@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e97955-414b-4e28-9230-682fa853d4cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/student_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/teacher_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/usecases/student_usecase.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/usecases/teacher_usecase.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/utils/date.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/academic_year_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/student_parent_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/academic_year_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/student_parent_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/student_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/teacher_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/teacher_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/entities/teacher.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/teacher.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/enums/status.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/enums/status.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/school_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/school_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/parent_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/parent_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/student_parent_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_parent_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/parent_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/parent_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/student_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/student_usecase.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +98,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VgoModernizerVersionTracker">
+    <upgrades>
+      <map>
+        <entry key="$PROJECT_DIR$/go.mod">
+          <value>
+            <VersionUpgradeInfo>
+              <version>1.26.3</version>
+              <timestamp>1782273953257</timestamp>
+            </VersionUpgradeInfo>
+          </value>
+        </entry>
+      </map>
+    </upgrades>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

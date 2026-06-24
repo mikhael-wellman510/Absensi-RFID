@@ -11,6 +11,7 @@ type (
 	ParentService interface {
 		CreateParent(ctx context.Context, parentReq *entities.ParentRequest) (*entities.ParentResponse, error)
 		FindParentByID(ctx context.Context, id string) (*entities.ParentResponse, error)
+		FindById(ctx context.Context, id string) (*entities.Parent, error)
 	}
 
 	parentService struct {
@@ -90,4 +91,9 @@ func (p *parentService) FindParentByID(ctx context.Context, id string) (*entitie
 		Occupation: res.Occupation,
 		Address:    res.Occupation,
 	}, nil
+}
+
+func (p *parentService) FindById(ctx context.Context, id string) (*entities.Parent, error) {
+
+	return p.parentRepository.FindById(ctx, id)
 }

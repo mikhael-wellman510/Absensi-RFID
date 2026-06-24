@@ -85,6 +85,22 @@ func (app *App) Routes() {
 	studentRoutes.POST("/createStudent", studentController.CreateStudent)
 	studentRoutes.GET("/findStudentById/:id", studentController.FindStudentById)
 
+	studentParentRepo := repositories.NewStudentParentRepository(app.Db)
+	studentParentUseCase := usecases.NewStudentParentService(studentParentRepo, studentUseCase, parentUseCase)
+	studentParentController := controllers.NewStudentParentController(studentParentUseCase)
+
+	studentParentRoutes := router.Group(fmt.Sprintf("%s/studentParent", baseUrl))
+	studentParentRoutes.POST("/createStudentParent", studentParentController.CreateStudentParent)
+	studentParentRoutes.GET("/findStudentParentById/:id", studentParentController.FindStudentParentById)
+
+	academicYearRepo := repositories.NewAcademicYearRepository(app.Db)
+	academicYearUseCase := usecases.NewAcademicYearService(academicYearRepo, schoolUseCase)
+	academicYearController := controllers.NewAcademicYearController(academicYearUseCase)
+
+	academicYearRoutes := router.Group(fmt.Sprintf("%s/academicYear", baseUrl))
+	academicYearRoutes.POST("/createAcademicYear", academicYearController.CreateAcademicYear)
+	academicYearRoutes.GET("/findAcademicYearById/:id", academicYearController.FindAcademicYear)
+
 	emailUseCase := usecases.NewEmailService()
 	emailController := controllers.NewEmailController(emailUseCase)
 
