@@ -33,7 +33,7 @@ func (c *classRoomRepository) FindById(ctx context.Context, id string) (*entitie
 
 	classRoom := &entities.ClassRoom{}
 
-	err := c.db.WithContext(ctx).Where("id = ?", id).First(classRoom).Error
+	err := c.db.WithContext(ctx).Preload("School").Preload("AcademicYears").Preload("Grade").Preload("Teacher").First(classRoom).Error
 
 	return classRoom, err
 }

@@ -11,6 +11,7 @@ type (
 	GradeService interface {
 		CreateGrade(ctx context.Context, gradeReq *entities.GradeRequest) (*entities.GradeResponse, error)
 		FindGradeById(ctx context.Context, id string) (*entities.GradeResponse, error)
+		FindById(ctx context.Context, id string) (*entities.Grade, error)
 	}
 
 	gradeService struct {
@@ -62,4 +63,9 @@ func (g *gradeService) FindGradeById(ctx context.Context, id string) (*entities.
 		CreatedAt:   res.CreatedAt,
 		UpdatedAt:   res.UpdatedAt,
 	}, nil
+}
+
+func (g *gradeService) FindById(ctx context.Context, id string) (*entities.Grade, error) {
+
+	return g.gradeRepository.FindById(ctx, id)
 }

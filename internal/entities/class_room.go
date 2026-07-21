@@ -11,8 +11,8 @@ type (
 		SchoolId        string       `json:"schoolId" gorm:"column:school_id;not null"`
 		AcademicYearsId string       `json:"academicYearsId" gorm:"column:academic_years_id;not null"`
 		GradeId         string       `json:"gradeId" gorm:"column:grade_id;not null"`
-		ClassName       string       `json:"className" gorm:"column:class_name;not null"`
 		TeacherId       string       `json:"teacherId" gorm:"column:teacher_id;not null"`
+		ClassName       string       `json:"className" gorm:"column:class_name;not null"`
 		School          School       `gorm:"foreignKey:SchoolId"`
 		AcademicYears   AcademicYear `gorm:"foreignKey:AcademicYearsId"`
 		Grade           Grade        `gorm:"foreignKey:GradeId"`
@@ -24,8 +24,8 @@ type (
 		SchoolId        string `json:"schoolId" binding:"required"`
 		AcademicYearsId string `json:"academicYearsId" binding:"required"`
 		GradeId         string `json:"gradeId" binding:"required"`
-		ClassName       string `json:"className" binding:"required"`
 		TeacherId       string `json:"teacherId" binding:"required"`
+		ClassName       string `json:"className" binding:"required"`
 	}
 
 	ClassRoomResponse struct {

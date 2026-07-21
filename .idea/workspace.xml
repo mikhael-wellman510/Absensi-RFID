@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e97955-414b-4e28-9230-682fa853d4cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/academic_year_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/student_parent_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/usecases/academic_year_usecase.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/usecases/student_parent_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/class_room_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/class_room_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/parent_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/parent_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/student_parent_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/student_parent_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/parent_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/parent_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/student_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/student_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/class_room_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/class_room_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/class_room.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/class_room.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/grade_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/grade_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/teacher_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/teacher_usecase.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
