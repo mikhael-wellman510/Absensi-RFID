@@ -12,6 +12,7 @@ func Migrate(db *gorm.DB) error {
 		&entities.AcademicYear{},
 		&entities.Attendance{},
 		&entities.AttendanceEvent{},
+		&entities.AuditLog{},
 		&entities.ClassRoom{},
 		&entities.Device{},
 		&entities.Grade{},
@@ -22,6 +23,7 @@ func Migrate(db *gorm.DB) error {
 		&entities.StudentParent{},
 		&entities.Teacher{},
 		&entities.User{},
+		&entities.UserSession{},
 	)
 
 	if err != nil {

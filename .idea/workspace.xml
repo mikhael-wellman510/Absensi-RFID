@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e97955-414b-4e28-9230-682fa853d4cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/adapters/controllers/class_room_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/usecases/class_room_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/authentication/authentication-flow.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/authentication/authentication.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/audit_log_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/adapters/repositories/user_session_repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/audit_log_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/usecases/user_session_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/class_room_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/class_room_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/entities/class_room.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/class_room.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/grade_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/grade_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/teacher_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/teacher_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/auth_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/auth_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/audit_log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/audit_log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entities/user_session.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entities/user_session.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/usecases/auth_service_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/auth_service_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/migrations.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/migrations.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +60,7 @@
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev/authentication-feature&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/Documents/Attandance-Project/Absensi-RFID&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
@@ -62,6 +69,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dell\Documents\Attandance-Project\Absensi-RFID" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell\Documents\Attandance-Project\Absensi-RFID\Docs\authentication" />
     </key>
   </component>
   <component name="RunManager">
