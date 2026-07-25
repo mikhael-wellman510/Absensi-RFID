@@ -41,8 +41,14 @@ func (app *App) Routes() {
 
 	baseUrl := fmt.Sprintf("%s/v%d", constants.ApiPrefix, constants.ApiVersion)
 
+	auditLogRepository := repositories.NewAuditLogRepository(app.Db)
+	auditLogUseCase := usecases.NewAuditLogService(auditLogRepository)
+
+	userSessionRepository := repositories.NewUserSessionRepository(app.Db)
+	userSessionUseCase := usecases.NewUserSessionService(userSessionRepository)
+
 	authRepo := repositories.NewAuthRepository(app.Db)
-	authUseCase := usecases.NewAuthService(authRepo)
+	authUseCase := usecases.NewAuthService(authRepo, auditLogUseCase, userSessionUseCase)
 	authController := controllers.NewAuthController(authUseCase)
 
 	// Public Routes
