@@ -65,7 +65,7 @@ func (a *authController) Login(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Login Berhasil", res))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Login successful", res))
 }
 
 func (a *authController) RefreshToken(ctx *gin.Context) {
@@ -82,29 +82,29 @@ func (a *authController) RefreshToken(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Token Berhasil Diperbarui", res))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Token refreshed successfully", res))
 }
 
 func (a *authController) Logout(ctx *gin.Context) {
 	sessionID := ctx.GetString("sessionID")
 
 	if err := a.authService.Logout(ctx.Request.Context(), sessionID); err != nil {
-		ctx.JSON(http.StatusInternalServerError, utils.BuildResponseFailed("Gagal logout"))
+		ctx.JSON(http.StatusInternalServerError, utils.BuildResponseFailed("Logout failed"))
 		return
 	}
 
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Berhasil logout", nil))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Logout successful", nil))
 }
 
 func (a *authController) LogoutAll(ctx *gin.Context) {
 	userID := ctx.GetString(constants.UserID)
 	log.Println("user id : ", userID)
 	if err := a.authService.LogoutAll(ctx.Request.Context(), userID); err != nil {
-		ctx.JSON(http.StatusInternalServerError, utils.BuildResponseFailed("Gagal logout seluruh perangkat"))
+		ctx.JSON(http.StatusInternalServerError, utils.BuildResponseFailed("Failed to log out from all devices"))
 		return
 	}
 
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Berhasil logout dari seluruh perangkat", nil))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Successfully logged out from all devices", nil))
 }
 
 func (a *authController) GetMe(ctx *gin.Context) {
@@ -114,7 +114,7 @@ func (a *authController) GetMe(ctx *gin.Context) {
 
 	res, err := a.authService.GetMe(ctx.Request.Context(), userID)
 	if err != nil {
-		ctx.JSON(http.StatusNotFound, utils.BuildResponseFailed("User tidak ditemukan"))
+		ctx.JSON(http.StatusNotFound, utils.BuildResponseFailed("User not found"))
 		return
 	}
 
@@ -130,7 +130,7 @@ func (a *authController) ForgotPassword(ctx *gin.Context) {
 	}
 
 	_ = a.authService.ForgotPassword(ctx.Request.Context(), &req, ctx.ClientIP(), ctx.Request.UserAgent())
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Jika email terdaftar, instruksi reset password telah dikirim", nil))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("If the email address is registered, password reset instructions have been sent.", nil))
 }
 
 func (a *authController) ResetPassword(ctx *gin.Context) {
@@ -146,13 +146,13 @@ func (a *authController) ResetPassword(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Password berhasil diperbarui. Silakan login kembali", nil))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Password updated successfully. Please log in again.", nil))
 }
 
 func (a *authController) VerifyEmail(ctx *gin.Context) {
 	token := ctx.Query(constants.Token)
 	if token == "" {
-		ctx.JSON(http.StatusBadRequest, utils.BuildResponseFailed("Token tidak ditemukan"))
+		ctx.JSON(http.StatusBadRequest, utils.BuildResponseFailed("Token not found"))
 		return
 	}
 
@@ -161,5 +161,5 @@ func (a *authController) VerifyEmail(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Email berhasil diverifikasi", nil))
+	ctx.JSON(http.StatusOK, utils.BuildResponseSuccess("Email verified successfully", nil))
 }

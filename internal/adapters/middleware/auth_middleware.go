@@ -18,13 +18,13 @@ func AuthMiddleware(authRepo repositories.AuthRepository, userSessionService use
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader(constants.HeaderAuthorization)
 		if authHeader == "" {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.BuildResponseUnauthorized("Header otorisasi diperlukan"))
+			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.BuildResponseUnauthorized("Authorization header is required"))
 			return
 		}
 
 		tokenParts := strings.Split(authHeader, " ")
 		if len(tokenParts) != 2 || tokenParts[0] != constants.BearerPrefix {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.BuildResponseUnauthorized("Format token harus 'Bearer <token>'"))
+			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.BuildResponseUnauthorized("Authorization header must use the format 'Bearer <token>'"))
 			return
 		}
 
@@ -33,7 +33,7 @@ func AuthMiddleware(authRepo repositories.AuthRepository, userSessionService use
 		claims, err := utils.ValidateToken(tokenParts[1], secret)
 
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.BuildResponseUnauthorized("Token expired atau tidak valid"))
+			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.BuildResponseUnauthorized("Token has expired or is invalid"))
 			return
 		}
 		log.Println("claims session id: ", claims.SessionID)
@@ -67,7 +67,7 @@ func RequireRoles(roles ...enums.Role) gin.HandlerFunc {
 		// Ini mengambil context ketika pengecekan lewat middleware
 		roleVal, exists := c.Get(constants.UserRole)
 		if !exists {
-			c.AbortWithStatusJSON(http.StatusForbidden, utils.BuildResponseForbidden("Role user tidak ditemukan"))
+			c.AbortWithStatusJSON(http.StatusForbidden, utils.BuildResponseForbidden("User role not found"))
 			return
 		}
 
@@ -82,7 +82,7 @@ func RequireRoles(roles ...enums.Role) gin.HandlerFunc {
 		}
 
 		if !hasRole {
-			c.AbortWithStatusJSON(http.StatusForbidden, utils.BuildResponseForbidden("Anda tidak memiliki akses ke resource ini"))
+			c.AbortWithStatusJSON(http.StatusForbidden, utils.BuildResponseForbidden("You do not have permission to access this resource"))
 			return
 		}
 
