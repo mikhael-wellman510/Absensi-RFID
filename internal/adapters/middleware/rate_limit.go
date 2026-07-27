@@ -33,7 +33,7 @@ func RateLimiter() gin.HandlerFunc {
 		limiter := getVisitorLimiter(ip)
 
 		if !limiter.Allow() {
-			c.AbortWithStatusJSON(http.StatusTooManyRequests, utils.BuildResponseTooManyRequests("Maksimum rate limit terlampaui. Silakan coba beberapa saat lagi."))
+			c.AbortWithStatusJSON(http.StatusTooManyRequests, utils.BuildResponseTooManyRequests("Rate limit exceeded. Please try again later."))
 			return
 		}
 

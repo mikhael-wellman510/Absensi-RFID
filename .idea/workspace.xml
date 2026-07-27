@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e97955-414b-4e28-9230-682fa853d4cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/authentication/authentication-flow.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/authentication/authentication-flow.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/authentication/authentication.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/authentication/authentication.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/adapters/controllers/auth_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/controllers/auth_controller.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/adapters/middleware/auth_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/middleware/auth_middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/adapters/middleware/rate_limit.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/middleware/rate_limit.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/adapters/repositories/user_session_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/adapters/repositories/user_session_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/seeders/super_admin_seeder.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/seeders/super_admin_seeder.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/auth_service_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/auth_service_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/usecases/user_session_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/usecases/user_session_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/utils/date.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/date.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/utils/responses.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/responses.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/constants/constans.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/constants/constans.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/drivers/sql/connect_db.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/drivers/sql/connect_db.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
