@@ -64,7 +64,7 @@ func (app *App) Routes() {
 
 	// Protected Routes
 	protectedRoutes := router.Group(baseUrl)
-	protectedRoutes.Use(middleware.AuthMiddleware(authRepo))
+	protectedRoutes.Use(middleware.AuthMiddleware(authRepo, userSessionUseCase))
 
 	authRoutesProtected := protectedRoutes.Group("/auth")
 	{
@@ -91,7 +91,7 @@ func (app *App) Routes() {
 	schoolRoutesProtected := protectedRoutes.Group("/school")
 	{
 		schoolRoutesProtected.POST("/createSchool", middleware.RequireRoles(enums.SuperAdmin), schoolController.CreateSchool)
-		schoolRoutesProtected.GET("/findSchoolById/:id", middleware.RequireRoles(enums.SuperAdmin), schoolController.FindSchoolById)
+		schoolRoutesProtected.GET("/findSchoolById/:id", middleware.RequireRoles(enums.Teacher), schoolController.FindSchoolById)
 	}
 
 	userRepo := repositories.NewUserRepository(app.Db)
@@ -165,7 +165,7 @@ func (app *App) Routes() {
 }
 
 func (app *App) Run() {
-	port := fmt.Sprintf(":%s", config.Config("PORT"))
+	port := fmt.Sprintf(":%s", config.Config(constants.Port))
 	err := app.Router.Run(port)
 	if err != nil {
 		return

@@ -12,6 +12,7 @@ type (
 		FindSessionByHash(ctx context.Context, hash string) (*entities.UserSession, error)
 		RevokeSessionByID(ctx context.Context, sessionID string) error
 		RevokeAllUserSessions(ctx context.Context, userID string) error
+		FindSessionByID(ctx context.Context, id string) (*entities.UserSession, error)
 	}
 
 	userSessionService struct {
@@ -42,4 +43,9 @@ func (u *userSessionService) RevokeSessionByID(ctx context.Context, sessionID st
 func (u *userSessionService) RevokeAllUserSessions(ctx context.Context, userID string) error {
 
 	return u.userSessionRepository.RevokeAllUserSessions(ctx, userID)
+}
+
+func (u *userSessionService) FindSessionByID(ctx context.Context, id string) (*entities.UserSession, error) {
+
+	return u.userSessionRepository.FindSessionById(ctx, id)
 }

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"attendance-api/internal/utils"
 	"net/http"
 	"sync"
 
@@ -32,9 +33,7 @@ func RateLimiter() gin.HandlerFunc {
 		limiter := getVisitorLimiter(ip)
 
 		if !limiter.Allow() {
-			c.AbortWithStatusJSON(http.StatusTooManyRequests, gin.H{
-				"error": "Maksimum rate limit terlampaui. Silakan coba beberapa saat lagi.",
-			})
+			c.AbortWithStatusJSON(http.StatusTooManyRequests, utils.BuildResponseTooManyRequests("Maksimum rate limit terlampaui. Silakan coba beberapa saat lagi."))
 			return
 		}
 

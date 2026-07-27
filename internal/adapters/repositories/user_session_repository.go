@@ -13,6 +13,7 @@ type (
 		FindSessionByHash(ctx context.Context, hash string) (*entities.UserSession, error)
 		RevokeSessionByID(ctx context.Context, sessionID string) error
 		RevokeAllUserSessions(ctx context.Context, userID string) error
+		FindSessionById(ctx context.Context, sessionId string) (*entities.UserSession, error)
 	}
 
 	userSessionRepository struct {
@@ -33,6 +34,16 @@ func (r *userSessionRepository) CreateSession(ctx context.Context, session *enti
 func (r *userSessionRepository) FindSessionByHash(ctx context.Context, hash string) (*entities.UserSession, error) {
 	session := &entities.UserSession{}
 	err := r.db.WithContext(ctx).Where("refresh_token_hash = ?", hash).First(session).Error
+	if err != nil {
+		return nil, err
+	}
+	return session, nil
+}
+
+func (r *userSessionRepository) FindSessionById(ctx context.Context, sessionId string) (*entities.UserSession, error) {
+	//TODO implement me
+	session := &entities.UserSession{}
+	err := r.db.WithContext(ctx).Where("id = ?", sessionId).First(session).Error
 	if err != nil {
 		return nil, err
 	}
