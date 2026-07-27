@@ -2,6 +2,7 @@ package sql
 
 import (
 	"attendance-api/config"
+	"attendance-api/pkg/constants"
 	"attendance-api/pkg/drivers/common"
 
 	"fmt"
@@ -15,11 +16,11 @@ import (
 func OpenDbConnection() *gorm.DB {
 
 	v := common.DbInfo{
-		Host:     config.Config("DB_HOST"),
-		User:     config.Config("DB_USER"),
-		Password: config.Config("DB_PASSWORD"),
-		DbName:   config.Config("DB_NAME"),
-		Port:     config.Config("DB_PORT"),
+		Host:     config.Config(constants.DbHost),
+		User:     config.Config(constants.DbUser),
+		Password: config.Config(constants.DbPassword),
+		DbName:   config.Config(constants.DbName),
+		Port:     config.Config(constants.DbPort),
 	}
 
 	/*pengecekan Host*/

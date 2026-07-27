@@ -4,6 +4,8 @@ import (
 	"attendance-api/internal/entities"
 	"attendance-api/internal/usecases"
 	"attendance-api/internal/utils"
+	"attendance-api/pkg/constants"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -95,8 +97,8 @@ func (a *authController) Logout(ctx *gin.Context) {
 }
 
 func (a *authController) LogoutAll(ctx *gin.Context) {
-	userID := ctx.GetString("userID")
-
+	userID := ctx.GetString(constants.UserID)
+	log.Println("user id : ", userID)
 	if err := a.authService.LogoutAll(ctx.Request.Context(), userID); err != nil {
 		ctx.JSON(http.StatusInternalServerError, utils.BuildResponseFailed("Gagal logout seluruh perangkat"))
 		return
@@ -108,7 +110,7 @@ func (a *authController) LogoutAll(ctx *gin.Context) {
 func (a *authController) GetMe(ctx *gin.Context) {
 	// ini berasal dari context yg tersimpan di server
 	// setelah melewati auth middleware tadi
-	userID := ctx.GetString("userID")
+	userID := ctx.GetString(constants.UserID)
 
 	res, err := a.authService.GetMe(ctx.Request.Context(), userID)
 	if err != nil {
@@ -148,7 +150,7 @@ func (a *authController) ResetPassword(ctx *gin.Context) {
 }
 
 func (a *authController) VerifyEmail(ctx *gin.Context) {
-	token := ctx.Query("token")
+	token := ctx.Query(constants.Token)
 	if token == "" {
 		ctx.JSON(http.StatusBadRequest, utils.BuildResponseFailed("Token tidak ditemukan"))
 		return

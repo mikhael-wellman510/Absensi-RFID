@@ -26,9 +26,18 @@ func SeedSuperAdmin(db *gorm.DB) {
 			return
 		}
 
-		admin := &entities.User{
-			FullName:        "System Administrator",
-			Email:           "superadmin@attendance.com", // Email default untuk login
+		admin1 := &entities.User{
+			FullName:        "System Administrator1",
+			Email:           "superadmin1@attendance.com", // Email default untuk login
+			PhoneNumber:     "000000000000",
+			Password:        hashedPassword,
+			Role:            enums.SuperAdmin,
+			IsActive:        true,
+			IsEmailVerified: true,
+		}
+		admin2 := &entities.User{
+			FullName:        "System Administrator2",
+			Email:           "superadmin2@attendance.com", // Email default untuk login
 			PhoneNumber:     "000000000000",
 			Password:        hashedPassword,
 			Role:            enums.SuperAdmin,
@@ -36,7 +45,11 @@ func SeedSuperAdmin(db *gorm.DB) {
 			IsEmailVerified: true,
 		}
 
-		if err := db.Create(admin).Error; err != nil {
+		var admins []*entities.User
+
+		listAdmin := append(admins, admin1, admin2)
+
+		if err := db.Create(listAdmin).Error; err != nil {
 			log.Fatalf("Gagal melakukan seeding Super Admin: %v", err)
 		}
 

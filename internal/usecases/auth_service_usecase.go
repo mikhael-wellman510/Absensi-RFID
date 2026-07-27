@@ -5,6 +5,7 @@ import (
 	"attendance-api/internal/adapters/repositories"
 	"attendance-api/internal/entities"
 	"attendance-api/internal/utils"
+	"attendance-api/pkg/constants"
 	"context"
 	"errors"
 	"fmt"
@@ -107,7 +108,7 @@ func (a *authService) Login(ctx context.Context, req *entities.LoginRequest, ip,
 
 	// Cek email ada atau engga
 	if err != nil {
-		a.auditLogService.logAudit(ctx, nil, "LOGIN_FAILED", ip, userAgent, fmt.Sprintf("Email tidak ditemukan: %s", req.Email))
+		a.auditLogService.logAudit(ctx, nil, constants.LoginFailed, ip, userAgent, fmt.Sprintf("Email tidak ditemukan: %s", req.Email))
 		return nil, errors.New("email atau password salah")
 	}
 
@@ -119,7 +120,7 @@ func (a *authService) Login(ctx context.Context, req *entities.LoginRequest, ip,
 	// 2. Jika Password salah , masuk kesini
 	if !utils.CheckPasswordHash(req.Password, user.Password) {
 		user.FailedLoginAttempts++
-		maxAttempts, _ := strconv.Atoi(config.Config("MAX_LOGIN_ATTEMPTS"))
+		maxAttempts, _ := strconv.Atoi(config.Config(constants.MaxLoginAttempts))
 		if maxAttempts == 0 {
 			maxAttempts = 5
 		}
@@ -127,12 +128,12 @@ func (a *authService) Login(ctx context.Context, req *entities.LoginRequest, ip,
 		// Jika percobaan login lebih dari > 5
 		if user.FailedLoginAttempts >= maxAttempts {
 			user.LockedUntil = new(time.Now().Add(15 * time.Minute))
-			a.auditLogService.logAudit(ctx, &user.ID, "ACCOUNT_LOCKED", ip, userAgent, "Terlalu banyak percobaan gagal")
+			a.auditLogService.logAudit(ctx, &user.ID, constants.AccountLocked, ip, userAgent, constants.ToManyRequest)
 		}
 
 		// Edit untuk menambahkan failed login attemps
 		_ = a.authRepository.UpdateUser(ctx, user)
-		a.auditLogService.logAudit(ctx, &user.ID, "LOGIN_FAILED", ip, userAgent, "Password salah")
+		a.auditLogService.logAudit(ctx, &user.ID, constants.LoginFailed, ip, userAgent, constants.WrongPassword)
 		return nil, errors.New("email atau password salah")
 	}
 
@@ -149,7 +150,7 @@ func (a *authService) Login(ctx context.Context, req *entities.LoginRequest, ip,
 	refreshTokenHash := utils.HashToken(rawRefreshToken)
 	log.Println("refresh Token Hash : ", refreshTokenHash)
 
-	ttlDays, _ := strconv.Atoi(config.Config("REFRESH_TOKEN_TTL_DAYS"))
+	ttlDays, _ := strconv.Atoi(config.Config(constants.RefreshTokenTtlDays))
 	if ttlDays == 0 {
 		ttlDays = 7
 	}
@@ -169,22 +170,22 @@ func (a *authService) Login(ctx context.Context, req *entities.LoginRequest, ip,
 	}
 
 	// 5. Generate Access Token JWT
-	jwtTTL, _ := strconv.Atoi(config.Config("JWT_TTL_MINUTES"))
+	jwtTTL, _ := strconv.Atoi(config.Config(constants.JwtTtlMinutes))
 	if jwtTTL == 0 {
 		jwtTTL = 15
 	}
 
-	accessToken, err := utils.GenerateAccessToken(user.ID, user.Role, session.ID, config.Config("JWT_SECRET"), jwtTTL)
+	accessToken, err := utils.GenerateAccessToken(user.ID, user.Role, session.ID, config.Config(constants.EnvJwtSecret), jwtTTL)
 	if err != nil {
 		return nil, err
 	}
 
-	a.auditLogService.logAudit(ctx, &user.ID, "LOGIN_SUCCESS", ip, userAgent, "Login Berhasil")
+	a.auditLogService.logAudit(ctx, &user.ID, constants.LoginSuccess, ip, userAgent, constants.LoginSuccessful)
 
 	return &entities.AuthResponse{
 		AccessToken:  accessToken,
 		RefreshToken: rawRefreshToken,
-		TokenType:    "Bearer",
+		TokenType:    constants.BearerPrefix,
 	}, nil
 }
 
@@ -216,19 +217,19 @@ func (a *authService) RefreshToken(ctx context.Context, req *entities.RefreshTok
 	}
 	_ = a.userSessionService.CreateSession(ctx, newSession)
 
-	jwtTTL, _ := strconv.Atoi(config.Config("JWT_TTL_MINUTES"))
+	jwtTTL, _ := strconv.Atoi(config.Config(constants.JwtTtlMinutes))
 	if jwtTTL == 0 {
 		jwtTTL = 15
 	}
 
-	newAccessToken, _ := utils.GenerateAccessToken(user.ID, user.Role, newSession.ID, config.Config("JWT_SECRET"), jwtTTL)
+	newAccessToken, _ := utils.GenerateAccessToken(user.ID, user.Role, newSession.ID, config.Config(constants.EnvJwtSecret), jwtTTL)
 
-	a.auditLogService.logAudit(ctx, &user.ID, "TOKEN_REFRESHED", ip, userAgent, "Token Diperbarui")
+	a.auditLogService.logAudit(ctx, &user.ID, constants.TokenRefreshed, ip, userAgent, constants.TokenRefreshedDetail)
 
 	return &entities.AuthResponse{
 		AccessToken:  newAccessToken,
 		RefreshToken: newRawRefreshToken,
-		TokenType:    "Bearer",
+		TokenType:    constants.BearerPrefix,
 	}, nil
 }
 
@@ -257,7 +258,7 @@ func (a *authService) ForgotPassword(ctx context.Context, req *entities.ForgotPa
 	user.PasswordResetExpires = &expiresAt
 	_ = a.authRepository.UpdateUser(ctx, user)
 
-	a.auditLogService.logAudit(ctx, &user.ID, "FORGOT_PASSWORD_REQUESTED", ip, userAgent, "Minta reset password")
+	a.auditLogService.logAudit(ctx, &user.ID, constants.ForgotPasswordRequested, ip, userAgent, constants.ResetPasswordDetail)
 
 	// Panggil Email Service Anda di sini untuk mengirim resetToken ke email user
 	return nil
@@ -283,7 +284,7 @@ func (a *authService) ResetPassword(ctx context.Context, req *entities.ResetPass
 	// Invalidasi semua session lama
 	_ = a.userSessionService.RevokeAllUserSessions(ctx, user.ID)
 
-	a.auditLogService.logAudit(ctx, &user.ID, "PASSWORD_RESET_SUCCESS", "", "", "Password berhasil diperbarui")
+	a.auditLogService.logAudit(ctx, &user.ID, constants.PasswordResetSuccess, "", "", constants.ChangePasswordDetail)
 	return nil
 }
 
