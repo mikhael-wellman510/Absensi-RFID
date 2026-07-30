@@ -21,10 +21,11 @@ func GenerateAccessToken(userID string, role enums.Role, sessionID string, secre
 		Role:      role,
 		SessionID: sessionID,
 		RegisteredClaims: jwt.RegisteredClaims{
-			//ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(ttlMinutes) * time.Minute)),
-			ExpiresAt: jwt.NewNumericDate(
-				time.Now().Add(10 * time.Second),
-			),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(ttlMinutes) * time.Minute)),
+			// Kalau mau testing JWT 10 detik
+			//ExpiresAt: jwt.NewNumericDate(
+			//	time.Now().Add(10 * time.Second),
+			//),
 			IssuedAt: jwt.NewNumericDate(time.Now()),
 		},
 	}
