@@ -65,10 +65,11 @@ type (
 	}
 
 	UserProfile struct {
-		Id          string `json:"id"`
-		FullName    string `json:"fullName"`
-		Email       string `json:"email"`
-		PhoneNumber string `json:"phoneNumber"`
+		Id          string     `json:"id"`
+		FullName    string     `json:"fullName"`
+		Email       string     `json:"email"`
+		PhoneNumber string     `json:"phoneNumber"`
+		Role        enums.Role `json:"role"`
 	}
 
 	// AuthResponse digunakan sebagai format response token ke client setelah login/refresh
