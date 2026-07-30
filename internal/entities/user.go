@@ -64,11 +64,19 @@ type (
 		Password string `json:"password" binding:"required"`
 	}
 
+	UserProfile struct {
+		Id          string `json:"id"`
+		FullName    string `json:"fullName"`
+		Email       string `json:"email"`
+		PhoneNumber string `json:"phoneNumber"`
+	}
+
 	// AuthResponse digunakan sebagai format response token ke client setelah login/refresh
 	AuthResponse struct {
-		AccessToken  string `json:"accessToken"`
-		RefreshToken string `json:"refreshToken"`
-		TokenType    string `json:"tokenType"`
+		AccessToken  string      `json:"accessToken"`
+		RefreshToken string      `json:"refreshToken"`
+		TokenType    string      `json:"tokenType"`
+		UserProfile  UserProfile `json:"userProfile"`
 	}
 
 	// RefreshTokenRequest digunakan untuk meminta access token baru dengan token rotasi
