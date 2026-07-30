@@ -182,10 +182,18 @@ func (a *authService) Login(ctx context.Context, req *entities.LoginRequest, ip,
 
 	a.auditLogService.logAudit(ctx, &user.ID, constants.LoginSuccess, ip, userAgent, constants.LoginSuccessful)
 
+	userProfile := entities.UserProfile{
+		Id:          user.ID,
+		FullName:    user.FullName,
+		Email:       user.Email,
+		PhoneNumber: user.PhoneNumber,
+	}
+
 	return &entities.AuthResponse{
 		AccessToken:  accessToken,
 		RefreshToken: rawRefreshToken,
 		TokenType:    constants.BearerPrefix,
+		UserProfile:  userProfile,
 	}, nil
 }
 

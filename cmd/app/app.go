@@ -38,6 +38,7 @@ func (app *App) ConnectDb() {
 func (app *App) Routes() {
 
 	router := gin.Default()
+	router.Use(middleware.CorsMiddleware())
 
 	baseUrl := fmt.Sprintf("%s/v%d", constants.ApiPrefix, constants.ApiVersion)
 
